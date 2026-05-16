@@ -23,3 +23,17 @@ jobs:
         run: |
           echo "The version is : ${{ steps.build-image.outputs.version }}"
           echo "The image name is : ${{ steps.build-image.outputs.image-name }}"
+          
+
+      - name: GitHub Env variables
+        id: github-env
+        run: |
+          echo "COMPONENT=catalogue" >> $GITHUB_ENV
+          echo "PROJECT=roboshop" >> $GITHUB_ENV
+          echo "LANGUAGE=nodejs" >> $GITHUB_ENV
+
+      - name: Print GitHub Env variables
+        run: |
+          echo "The Component is : $COMPONENT"
+          echo "The Project is : $PROJECT"
+          echo "The Language is : $LANGUAGE"
