@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      # These Variables are visible only with in the JOB
       - name: Build Image
         id: build-image
         run: |
@@ -25,6 +27,7 @@ jobs:
           echo "The image name is : ${{ steps.build-image.outputs.image-name }}"
           
 
+      # These Variables are visible entire workflow
       - name: GitHub Env variables
         id: github-env
         run: |
