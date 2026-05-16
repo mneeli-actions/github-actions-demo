@@ -2,12 +2,6 @@ name: outputs-workflow
 
 on: [ push ]
 
-env:
-  # Define an environment variable for the workflow
-  GREETING: "Hello from GitHub Actions!"
-  PROJECT: "roboshop"
-  COMPONENT: "catalogue"
-
 jobs:
   carry-output:
     runs-on: ubuntu-latest
