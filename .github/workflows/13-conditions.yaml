@@ -8,9 +8,9 @@ jobs:
 
     steps:
       - name: Build main branch
-        if: github.ref_name == "main"
+        if: github.ref_name == 'main'
         run: echo "Building from main Branch"
 
       - name: Build feature branch
-        if: github.ref_name == "feature*"
+        if: github.ref_name == 'feature*'
         run: echo "Building from feature Branch"
