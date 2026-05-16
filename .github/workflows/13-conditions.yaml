@@ -1,0 +1,16 @@
+name: conditions-workflow
+
+on: [push]
+
+jobs:
+  production-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build main branch
+        if: github.ref_name == "main"
+        run: echo "Building from main Branch"
+
+      - name: Build feature branch
+        if: github.ref_name == "feature*"
+        run: echo "Building from feature Branch"

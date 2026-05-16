@@ -1,7 +1,8 @@
 name: concurrency-workflow
 
 # Trigger the workflow on every push to the repository
-on: [push]
+# on: push
+on: workflow_dispatch
 
 concurrency:
   # which is, concurrency-workflow-main
