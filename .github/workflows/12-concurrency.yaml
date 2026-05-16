@@ -1,0 +1,23 @@
+name: concurrency-workflow
+
+# Trigger the workflow on every push to the repository
+on: [push]
+
+concurrency:
+  # which is, concurrency-workflow-main
+  # github.workflow = The name of the workflow, which is "concurrency-workflow" in this case.
+  # github.ref_name = The name of the branch or tag that triggered the workflow.
+  # For example, if the workflow is triggered by a push to the "main" branch, then github.ref_name will be "main".
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true  # if true, any current execution will be canceled, and the new one will execute.
+
+jobs:
+  # Job Name
+  say-hello:
+    # Use the latest Ubuntu runner provided by GitHub
+    # Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Sleep for 200 seconds
+        run: sleep 200
