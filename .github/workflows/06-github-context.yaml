@@ -1,0 +1,12 @@
+name: github-context-workflow
+
+on: [ push ]
+
+jobs:
+  print-github-context:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print GitHub Context
+        run: |
+          echo "GitHub Context: ${{ toJson(github) }}"
