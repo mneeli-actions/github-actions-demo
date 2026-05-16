@@ -1,4 +1,4 @@
-name: Hello-World-Workflow
+name: Manul-Trigger-Workflow
 
 # Manual trigger from the GitHub Actions tab
 on: workflow_dispatch
