@@ -1,0 +1,25 @@
+name: secrets-workflow
+
+on: [ push ]
+
+env:
+  # Define an environment variable for the workflow
+  GREETING: "Hello from GitHub Actions!"
+  PROJECT: "roboshop"
+  COMPONENT: "catalogue"
+
+jobs:
+  carry-output:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build Image
+        id: build-image
+        run: |
+          echo "version=1.0.0" >> $GITHUB_OUTPUT
+          echo "image-name=1.0.0" >> $GITHUB_OUTPUT
+
+      - name: Use Output
+        run: |
+          echo "The version is : ${{ steps.build-image.outputs.version }}"
+          echo "The image name is : ${{ steps.build-image.outputs.image-name }}"
