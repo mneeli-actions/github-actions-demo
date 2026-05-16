@@ -2,6 +2,8 @@ name: call-shared-work-workflow
 
 on: [push]
 
+# This workflow is triggered when there is a push to the repository.
+# It calls another workflow defined in the mneeli-actions/github-workflows repository using the `workflow_call` event.
 jobs:
  feature-branch-workflow:
     uses: mneeli-actions/github-workflows/.github/workflows/nodejs-feature-pipeline.yaml@main
