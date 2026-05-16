@@ -1,0 +1,23 @@
+name: pull-request-workflow
+
+on:
+  # Trigger the workflow on pull request events
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+    branches:
+      - 'release/**'  # Trigger on pushes to branches that start with 'release'
+      - 'main*'  # Trigger on pushes to branches that start with 'main'
+
+jobs:
+  # Job Name
+  push-main-branch:
+    # Use the latest Ubuntu runner provided by GitHub
+    # Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run a one-line script
+        run: echo "Hello, World!"
