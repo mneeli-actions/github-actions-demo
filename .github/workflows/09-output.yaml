@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       # These Variables are visible only with in the JOB
       - name: Build Image
         id: build-image
@@ -30,6 +29,17 @@ jobs:
           echo "LANGUAGE=nodejs" >> $GITHUB_ENV
 
       - name: Print GitHub Env variables
+        run: |
+          echo "The Component is : $COMPONENT"
+          echo "The Project is : $PROJECT"
+          echo "The Language is : $LANGUAGE"
+
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Before Job GitHub Env variables
         run: |
           echo "The Component is : $COMPONENT"
           echo "The Project is : $PROJECT"
