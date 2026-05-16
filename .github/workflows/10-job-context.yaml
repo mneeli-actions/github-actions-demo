@@ -1,6 +1,7 @@
 name: job-context-workflow
 
-on: [ push ]
+#on: [ push ]
+on: workflow_dispatch
 
 jobs:
   carry-output:
