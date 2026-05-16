@@ -1,0 +1,27 @@
+name: github-context-workflow
+
+on: [ push ]
+
+env:
+  # Define an environment variable for the workflow
+  GREETING: "Hello from GitHub Actions!"
+  PROJECT: "roboshop"
+  COMPONENT: "catalogue"
+
+jobs:
+  print-github-context:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print GitHub Context
+        run: |
+          echo "GitHub Context: ${{ toJson(github) }}"
+
+      - name: Display Branch Name
+        run: echo "The current branch is ${{ github.ref_name }}"
+
+      - name: Use Environment Variables
+        run: |
+          echo "$GREETING"
+          echo "Project: $PROJECT"
+          echo "Component: $COMPONENT"
