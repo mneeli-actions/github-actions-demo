@@ -1,0 +1,11 @@
+name: call-shared-work-workflow
+
+on: [push]
+
+jobs:
+ feature-branch-workflow:
+    uses: mneeli-actions/github-workflows/.github/workflows/nodejs-feature-pipeline.yaml@main
+    with:
+      project: 'roboshop'
+      component: 'catalogue'
+      environment: 'dev'

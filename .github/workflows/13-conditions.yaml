@@ -1,6 +1,7 @@
 name: conditions-workflow
 
-on: [push]
+# on: [push]
+on: workflow_dispatch
 
 jobs:
   production-deploy:
