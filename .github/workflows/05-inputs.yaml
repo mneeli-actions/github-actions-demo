@@ -28,6 +28,6 @@ jobs:
     steps:
       - name: Print Inputs
         run: |
-          echo  The logLevel are : ${{ inputs.logLevel }}
-          echo  The print_tags are : ${{ inputs.print_tags }}
-          echo  The tags are : ${{ inputs.tags }}
+          echo  The logLevel is : ${{ inputs.logLevel }}
+          echo  The print_tags is : ${{ inputs.print_tags }}
+          echo  The tags is : ${{ inputs.tags }}
