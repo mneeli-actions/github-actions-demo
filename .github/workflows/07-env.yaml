@@ -1,4 +1,4 @@
-name: github-context-workflow
+name: environment-workflow
 
 on: [ push ]
 
