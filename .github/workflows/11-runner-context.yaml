@@ -1,0 +1,59 @@
+name: runner-context-workflow
+
+on: [ push ]
+
+jobs:
+  carry-output:
+    runs-on: ubuntu-latest
+    outputs:
+      image-version: ${{ steps.build-image.outputs.version }}
+      image-name: ${{ steps.build-image.outputs.image-name }}
+    steps:
+      # These Variables are visible only with in the JOB, but can expose them to other jobs by using the
+      # outputs keyword in the job definition and then referencing them in the dependent jobs using
+      # needs.<job_id>.outputs.<output_name>
+      - name: Build Image
+        id: build-image
+        run: |
+          echo "version=1.0.0" >> $GITHUB_OUTPUT
+          echo "image-name=catalogue" >> $GITHUB_OUTPUT
+
+      - name: Use Output
+        run: |
+          echo "The version is : ${{ steps.build-image.outputs.version }}"
+          echo "The image name is : ${{ steps.build-image.outputs.image-name }}"
+      
+
+      # These Variables are visible only with in the job(scope is limited to the job)
+      - name: GitHub Env variables
+        id: github-env
+        run: |
+          echo "COMPONENT=catalogue" >> $GITHUB_ENV
+          echo "PROJECT=roboshop" >> $GITHUB_ENV
+          echo "LANGUAGE=nodejs" >> $GITHUB_ENV
+
+      - name: Print GitHub Env variables
+        run: |
+          echo "The Component is : $COMPONENT"
+          echo "The Project is : $PROJECT"
+          echo "The Language is : $LANGUAGE"
+
+      - name : Print job context
+        run: echo "${{ toJson(job) }}"
+
+  deploy:
+    runs-on: ubuntu-latest
+    # The deploy job is dependent on the carry-output job, so it can access the outputs of the carry-output job
+    needs:
+      - carry-output
+    steps:
+      - name: Print Before Job GitHub Env variables
+        run: |
+          echo "The image-version is : ${{ needs.carry-output.outputs.image-version }}"
+          echo "The image-name is : ${{ needs.carry-output.outputs.image-name }}"
+
+      - name : Print job context
+        run: echo "${{ toJson(job) }}"
+
+      - name: Print runner context
+        run: echo "${{ toJson(runner) }}"
