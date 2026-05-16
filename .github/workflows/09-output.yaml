@@ -19,7 +19,7 @@ jobs:
         id: build-image
         run: |
           echo "version=1.0.0" >> $GITHUB_OUTPUT
-          echo "image-name=1.0.0" >> $GITHUB_OUTPUT
+          echo "image-name=catalogue" >> $GITHUB_OUTPUT
 
       - name: Use Output
         run: |
