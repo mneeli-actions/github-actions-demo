@@ -1,0 +1,17 @@
+name: main-branch-push-workflow
+
+# Trigger the workflow on every push to the repository
+on:
+  push:
+    branches:
+      - 'main*'  # Trigger on pushes to branches that start with 'main'
+jobs:
+  # Job Name
+  push-main-branch:
+    # Use the latest Ubuntu runner provided by GitHub
+    # Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run a one-line script
+        run: echo "Hello, World!"
