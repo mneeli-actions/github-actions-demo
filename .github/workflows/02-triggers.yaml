@@ -1,0 +1,15 @@
+name: Hello-World-Workflow
+
+# Manual trigger from the GitHub Actions tab
+on: workflow_dispatch
+
+jobs:
+  # Job Name
+  say-hello:
+    # Use the latest Ubuntu runner provided by GitHub
+    # Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Manual Trigger
+        run: echo "Hello, World!"
