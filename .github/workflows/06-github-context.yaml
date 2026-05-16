@@ -10,3 +10,6 @@ jobs:
       - name: Print GitHub Context
         run: |
           echo "GitHub Context: ${{ toJson(github) }}"
+
+      - name: Display Branch Name
+        run: echo "The current branch is ${{ github.ref_name }}"
