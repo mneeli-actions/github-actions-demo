@@ -39,7 +39,7 @@ jobs:
           echo "The Language is : $LANGUAGE"
 
       - name : Print job context
-        run: "${{ toJson(job) }}"
+        run: echo "${{ toJson(job) }}"
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,4 +53,4 @@ jobs:
           echo "The image-name is : ${{ needs.carry-output.outputs.image-name }}"
 
       - name : Print job context
-        run: "${{ toJson(job) }}"
+        run: echo "${{ toJson(job) }}"
