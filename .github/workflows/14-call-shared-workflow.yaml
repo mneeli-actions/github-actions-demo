@@ -1,6 +1,7 @@
 name: call-shared-work-workflow
 
-on: [push]
+# on: [push]
+on: workflow_dispatch
 
 # This workflow is triggered when there is a push to the repository.
 # It calls another workflow defined in the mneeli-actions/github-workflows repository using the `workflow_call` event.

@@ -1,0 +1,15 @@
+name: self-hosted-workflow
+
+# Trigger the workflow on every push to the repository
+on: [push]
+
+jobs:
+  # Job Name
+  self-hosted-job:
+    # Use the Self Hosted runner provided created by us
+    # Agent
+    runs-on: self-hosted
+
+    steps:
+      - name: Run a one-line script
+        run: echo "Hello, World!"
